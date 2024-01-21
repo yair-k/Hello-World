@@ -36,10 +36,8 @@ jquery: https://github.com/jquery/jquery \
 tensorflow: https://github.com/tensorflow/tensorflow \
 firebase: https://github.com/firebase \
 openpose: https://github.com/CMU-Perceptual-Computing-Lab/openpose \
-google-cld3: https://github.com/google/cld3 \
 WLASL: https://github.com/dxli94/WLASL \
 mediapipe: https://github.com/google/mediapipe \
-bergamot: https://github.com/browsermt/bergamot-translator \
 pose: https://github.com/sign-language-processing/pose \
 humanGAN: https://github.com/3dhumangan/3DHumanGAN
 
