@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Frequently Asked Questions</h2>
+
+  <ion-accordion-group>
+    <ion-accordion *ngFor="let question of questions">
+      <ion-item slot="header">
+        <ion-label>{{ question.question }}</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <p>{{ question.answer }}</p>
+        <ol *ngIf="question.steps">
+          <li *ngFor="let step of question.steps">
+            {{ step }}
+          </li>
+        </ol>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+</div>

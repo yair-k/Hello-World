@@ -1,0 +1,17 @@
+<div id="direction-grid">
+  <img [src]="this.androidScreenshot" aria-labelledby="translate-spoken-signed" />
+  <div>
+    <ng-container *transloco="let t; read: 'landing.about.direction'">
+      <h2 id="translate-spoken-signed">
+        <ion-icon name="chevron-back"></ion-icon>
+        {{ t('spoken-to-signed') }}
+      </h2>
+
+      <h2 id="translate-signed-spoken">
+        <ion-icon name="chevron-forward"></ion-icon>
+        {{ t('signed-to-spoken') }}
+      </h2>
+    </ng-container>
+  </div>
+  <img [src]="this.iOSScreenshot" aria-labelledby="translate-signed-spoken" />
+</div>

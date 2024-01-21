@@ -1,0 +1,51 @@
+@import './material.scss';
+@import 'fonts/roboto.css';
+
+.container {
+  width: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-md {
+  // Lighten shadow from material header
+  box-shadow: 0 1px 0px -1px rgba(0, 0, 0, 0.2), 0 -1px 8px 0 rgba(0, 0, 0, 0.14), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+}
+
+body {
+  --mdc-typography-button-letter-spacing: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  background-color: white;
+
+  --app-divider-color: rgba(0, 0, 0, 0.12);
+  --app-tinted-background-color: #fafafa; /* map-get(mat.$grey-palette, 50); */
+
+  @media (prefers-color-scheme: dark) {
+    background-color: black !important;
+
+    --app-divider-color: rgba(255, 255, 255, 0.12);
+    --app-tinted-background-color: #001021;
+  }
+
+  &.embed {
+    ion-header,
+    #input-mode-group,
+    app-send-feedback {
+      display: none !important;
+    }
+  }
+}
+
+.actions-row {
+  position: absolute;
+  margin: 14px;
+  bottom: 0;
+  right: 0;
+  text-align: end;
+  width: calc(100% - 2 * 14px);
+}
+
+@import './ionic-variables';
+@import './ionic';

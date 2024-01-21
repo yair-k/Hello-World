@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Meet the Team</h2>
+
+  <div class="cards-container">
+    <ion-card *ngFor="let member of teamMembers">
+      <ion-card-header>
+        <ion-avatar>
+          <img [src]="member.avatar" [alt]="member.name" />
+        </ion-avatar>
+        <ion-card-title>{{ member.name }}</ion-card-title>
+        <ion-card-subtitle>{{ member.title }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ member.bio }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</div>

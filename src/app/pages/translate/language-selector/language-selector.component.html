@@ -1,0 +1,73 @@
+<ng-container *transloco="let t; read: 'translate.language-selector'">
+  <mat-tab-group
+    (selectedIndexChange)="selectLanguageIndex($event)"
+    [(selectedIndex)]="selectedIndex"
+    [disablePagination]="true">
+    <ng-container *ngIf="hasLanguageDetection">
+      <ng-container *ngIf="detectedLanguage && !language; else detectLanguage">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            {{ t('detected', {lang: langNames[detectedLanguage]}) }}
+          </ng-template>
+        </mat-tab>
+      </ng-container>
+      <ng-template #detectLanguage>
+        <mat-tab [label]="t('detect')"></mat-tab>
+      </ng-template>
+    </ng-container>
+    <mat-tab (select)="selectLanguage(lang)" *ngFor="let lang of topLanguages">
+      <ng-template mat-tab-label>
+        <app-flag-icon *ngIf="flags" [country]="langCountries[lang]" [squared]="true"></app-flag-icon>
+        {{ langNames[lang] }}
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+
+  <!-- Language button for small screens -->
+  <ng-container *ngIf="hasLanguageDetection && detectedLanguage && !language; else detectLanguage">
+    <ion-button
+      [matMenuTriggerFor]="signedLanguagesMenu"
+      class="menu-language-button"
+      color="primary"
+      expand="full"
+      fill="clear">
+      <app-flag-icon *ngIf="flags" [country]="langCountries[detectedLanguage]" [squared]="true"></app-flag-icon>
+      {{ t('detected', {lang: langNames[detectedLanguage]}) }}
+    </ion-button>
+  </ng-container>
+  <ng-template #detectLanguage>
+    <ion-button
+      [matMenuTriggerFor]="signedLanguagesMenu"
+      class="menu-language-button"
+      color="primary"
+      expand="full"
+      fill="clear">
+      <ng-container *ngIf="language; else noLanguage">
+        <app-flag-icon *ngIf="flags" [country]="langCountries[language]" [squared]="true"></app-flag-icon>
+        {{ langNames[language] }}
+      </ng-container>
+      <ng-template #noLanguage>{{ t('detect') }}</ng-template>
+    </ion-button>
+  </ng-template>
+
+  <!-- Expand icon for large screens -->
+  <ion-button
+    fill="clear"
+    color="medium"
+    [matMenuTriggerFor]="signedLanguagesMenu"
+    class="menu-icon-button"
+    [attr.aria-label]="t('more')">
+    <ion-icon name="chevron-down"></ion-icon>
+  </ion-button>
+  <mat-menu #signedLanguagesMenu class="language-selector-menu">
+    <ng-template matMenuContent>
+      <button (click)="selectLanguage(null)" mat-menu-item *ngIf="hasLanguageDetection">
+        {{ t('detect') }}
+      </button>
+      <button (click)="selectLanguage(language)" *ngFor="let language of languages" mat-menu-item>
+        <app-flag-icon *ngIf="flags" [country]="langCountries[language]" [squared]="true"></app-flag-icon>
+        {{ langNames[language] }}
+      </button>
+    </ng-template>
+  </mat-menu>
+</ng-container>

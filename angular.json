@@ -1,0 +1,305 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "sign-translate": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/sign-translate/browser",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/assets",
+              "src/manifest.webmanifest",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@mediapipe/holistic/",
+                "output": "./assets/models/holistic/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@mediapipe/tasks-text/wasm/",
+                "output": "./assets/models/mediapipe-language-detector/"
+              },
+              {
+                "glob": "*.wasm",
+                "input": "./node_modules/@tensorflow/tfjs-backend-wasm/dist/",
+                "output": "./assets/models/tfjs-backend-wasm/"
+              },
+              {
+                "glob": "*.svg",
+                "input": "./node_modules/flag-icons/flags/1x1/",
+                "output": "./assets/flags/1x1/"
+              },
+              {
+                "glob": "*.ttf",
+                "input": "./node_modules/@sutton-signwriting/font-ttf/font",
+                "output": "./assets/fonts/signwriting/"
+              },
+              {
+                "glob": "**/*.json",
+                "input": "node_modules/@sign-mt/i18n/build/",
+                "output": "./assets/i18n/"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@sign-mt/browsermt/artifacts/",
+                "output": "./browsermt/"
+              },
+              {
+                "glob": "worker.js",
+                "input": "node_modules/@sign-mt/browsermt/build/bundled/",
+                "output": "./browsermt/"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
+            ],
+            "styles": [
+              {
+                "input": "src/theme/styles.scss",
+                "bundleName": "app"
+              },
+              {
+                "input": "./node_modules/leaflet/dist/leaflet.css",
+                "bundleName": "map",
+                "inject": false
+              }
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules/"]
+            },
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json",
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true,
+            "webWorkerTsConfig": "tsconfig.worker.json"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "namedChunks": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "development": {
+              "serviceWorker": false
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "headers": {
+              "Cross-Origin-Opener-Policy": "same-origin",
+              "Cross-Origin-Embedder-Policy": "require-corp"
+            },
+            "buildTarget": "sign-translate:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "sign-translate:build:production"
+            },
+            "development": {
+              "buildTarget": "sign-translate:build:development"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "sign-translate:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "fileReplacements": [
+              {
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.test.ts"
+              }
+            ],
+            "assets": [
+              "src/assets",
+              "src/manifest.webmanifest",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@mediapipe/holistic/",
+                "output": "./assets/models/holistic/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@mediapipe/tasks-text/wasm/",
+                "output": "./assets/models/mediapipe-language-detector/"
+              },
+              {
+                "glob": "*.wasm",
+                "input": "./node_modules/@tensorflow/tfjs-backend-wasm/dist/",
+                "output": "./assets/models/tfjs-backend-wasm/"
+              },
+              {
+                "glob": "*.svg",
+                "input": "./node_modules/flag-icons/flags/1x1/",
+                "output": "./assets/flags/1x1/"
+              },
+              {
+                "glob": "*.ttf",
+                "input": "./node_modules/@sutton-signwriting/font-ttf/font",
+                "output": "./assets/fonts/signwriting/"
+              },
+              {
+                "glob": "**/*.json",
+                "input": "node_modules/@sign-mt/i18n/build/",
+                "output": "./assets/i18n/"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@sign-mt/browsermt/artifacts/",
+                "output": "./browsermt/"
+              },
+              {
+                "glob": "worker.js",
+                "input": "node_modules/@sign-mt/browsermt/build/bundled/",
+                "output": "./browsermt/"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
+            ],
+            "styles": ["src/theme/styles.scss"],
+            "scripts": [],
+            "webWorkerTsConfig": "tsconfig.worker.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/sign-translate/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "optimization": false,
+            "sourceMap": true,
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules/"]
+            },
+            "extractLicenses": false
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@angular-devkit/build-angular:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "sign-translate:build",
+              "serverTarget": "sign-translate:server"
+            },
+            "production": {
+              "browserTarget": "sign-translate:build:production",
+              "serverTarget": "sign-translate:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@angular-devkit/build-angular:prerender",
+          "options": {
+            "routes": [
+              "/",
+              "/about",
+              "/about/languages",
+              "/about/contribute",
+              "/about/tools",
+              "/legal/terms",
+              "/legal/privacy",
+              "/legal/licenses"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sign-translate:build:production",
+              "serverTarget": "sign-translate:server:production"
+            },
+            "development": {
+              "browserTarget": "sign-translate:build",
+              "serverTarget": "sign-translate:server"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "da7f7e1b-ea69-47b0-a971-5d7f28b86a48"
+  }
+}

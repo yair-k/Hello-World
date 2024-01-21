@@ -1,0 +1,21 @@
+select {
+  font-size: 14px;
+  border: none;
+  background: transparent;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: white;
+
+    * {
+      /*
+      Only required for Windows, Chrome
+      https://github.com/sign/translate/issues/54
+       */
+      background: black;
+    }
+  }
+}

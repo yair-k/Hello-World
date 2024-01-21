@@ -1,0 +1,22 @@
+@import '../../../../theme/variables';
+
+:host {
+  display: grid;
+  width: 100%;
+  grid-template-areas: 'spoken signwriting signed';
+  grid-template-columns: auto 100px 50%;
+
+  @media #{$breakpoint-lt-sm} {
+    grid-template-areas: 'signed signed' 'spoken signwriting';
+    grid-template-columns: auto 100px;
+
+ 
+  }
+
+}
+
+
+
+app-signed-language-output {
+  grid-area: signed;
+}

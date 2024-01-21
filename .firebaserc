@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "hello-world"
+  },
+  "targets": {
+    "sign-mt": {
+      "hosting": {
+        "translate": [
+          "world-hello-mt"
+        ]
+      }
+    }
+  }
+}

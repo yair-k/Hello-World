@@ -1,0 +1,7 @@
+.angular
+.firebase
+dist
+coverage
+functions/lib
+tools/cache
+out-tsc/

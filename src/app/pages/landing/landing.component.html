@@ -1,0 +1,75 @@
+<ion-menu contentId="main-content" *ngIf="isMobile.matches">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-list-header lines="full">
+        <ion-label>Pages</ion-label>
+      </ion-list-header>
+      <ion-menu-toggle>
+        <ion-item *ngFor="let page of pages" [routerLink]="['/about', page]" queryParamsHandling="preserve">
+          <ion-label>{{ 'landing.' + page + '.title' | transloco }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header lines="full">
+        <ion-label>Legal</ion-label>
+      </ion-list-header>
+      <ion-menu-toggle>
+        <ion-item *ngFor="let page of legalPages" [routerLink]="['/legal', page]" queryParamsHandling="preserve">
+          <ion-label>{{ 'legal.' + page + '.title' | transloco }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer>
+    <ion-button routerLink="/" color="primary" queryParamsHandling="preserve" fill="clear">
+      {{ 'landing.try' | transloco }}
+    </ion-button>
+  </ion-footer>
+</ion-menu>
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="isMobile.matches">
+      <ion-menu-button auto-hide="true"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'translate.title' | transloco }}</ion-title>
+    <ng-container *ngIf="!isMobile.matches">
+      <ion-buttons slot="primary">
+        <ion-button routerLink="/" color="primary" queryParamsHandling="preserve">
+          {{ 'landing.try' | transloco }}
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="secondary">
+        <ion-button *ngFor="let page of pages" [routerLink]="['/about', page]" queryParamsHandling="preserve">
+          {{ 'landing.' + page + '.title' | transloco }}
+        </ion-button>
+      </ion-buttons>
+    </ng-container>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main-content">
+  <router-outlet></router-outlet>
+
+  <ion-toolbar>
+    <ng-container *ngIf="!isMobile.matches">
+      <ion-buttons slot="start">
+        <ion-button *ngFor="let page of legalPages" [routerLink]="['/legal', page]" queryParamsHandling="preserve">
+          {{ 'legal.' + page + '.title' | transloco }}
+        </ion-button>
+      </ion-buttons>
+    </ng-container>
+
+    <ion-buttons slot="primary">
+      <app-i18n-language-selector></app-i18n-language-selector>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-content>
