@@ -43,7 +43,7 @@ WLASL: https://github.com/dxli94/WLASL \
 mediapipe: https://github.com/google/mediapipe \
 bergamot: https://github.com/browsermt/bergamot-translator \
 pose: https://github.com/sign-language-processing/pose \
-humanGAN: https://github.com/3dhumangan/3DHumanGAN \
+humanGAN: https://github.com/3dhumangan/3DHumanGAN
 
 ## License
 
