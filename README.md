@@ -12,11 +12,9 @@ Welcome to Hello World, an accessiblity tool that translates written and spoken 
 
 ## Features
 
-- **Variable Sensitivity / Mouse Settings**: HandPilot allows the user to set sensitivity to their own liking when using the camera to control a cursor. As well,  different hand gestures can be mapped to different functions by altering the source code.
-
-- **Mouse Functions**: Through hand gestures, the user can scroll and click as well as move the cursor anywhere they like.
-
-- **Free Access**: HandPilot is available completely free of charge, ensuring that everyone can benefit from this tool.
+- **Audio/Text to Sign translating**
+- **Sign to Audio/Text translating**
+- **Animated sign language, not static**
 
 ## Usage
 
