@@ -32,18 +32,18 @@ We value your feedback to help us improve Hello World. If you encounter any issu
 
 ## Libraries, APIs, External Sources
 
-https://github.com/nodejs
-https://github.com/angular/angular.js
-https://github.com/jquery/jquery
-https://github.com/tensorflow/tensorflow
-https://github.com/firebase/
-https://github.com/CMU-Perceptual-Computing-Lab/openpose
-https://github.com/google/cld3
-https://github.com/dxli94/WLASL
-https://github.com/google/mediapipe
-https://github.com/browsermt/bergamot-translator
-https://github.com/sign-language-processing/pose
-https://github.com/3dhumangan/3DHumanGAN
+node.js: https://github.com/nodejs
+angular.js: https://github.com/angular/angular.js
+jquery: https://github.com/jquery/jquery
+tensorflow: https://github.com/tensorflow/tensorflow
+firebase: https://github.com/firebase
+openpose: https://github.com/CMU-Perceptual-Computing-Lab/openpose
+google-cld3: https://github.com/google/cld3
+WLASL: https://github.com/dxli94/WLASL
+mediapipe: https://github.com/google/mediapipe
+bergamot: https://github.com/browsermt/bergamot-translator
+pose: https://github.com/sign-language-processing/pose
+humanGAN: https://github.com/3dhumangan/3DHumanGAN
 
 ## License
 
